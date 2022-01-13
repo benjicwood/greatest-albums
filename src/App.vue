@@ -1,14 +1,23 @@
 <template>
-  <Album />
+  <Album v-for="album in albumList" :key="album.position" :album="album" />
 </template>
 
 <script>
+import { albums } from './albums'
+
 import Album from './components/Album.vue'
 
 export default {
   name: 'App',
   components: {
     Album
+  },
+  setup() {
+    const albumList = albums;
+    // console.log(albumList)
+    return {
+      albumList,
+    }
   }
 }
 </script>
