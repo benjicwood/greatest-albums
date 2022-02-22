@@ -1,5 +1,7 @@
 <template>
+<div class="grid">
   <Album v-for="album in albumList" :key="album.position" :album="album" />
+  </div>
 </template>
 
 <script>
@@ -30,5 +32,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+</style>
+
+<style scoped>
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-gap: 10px;
 }
 </style>
