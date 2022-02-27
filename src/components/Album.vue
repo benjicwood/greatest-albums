@@ -6,12 +6,15 @@
                 <div class="flip-card-front">
             <img :src="getAlbumCover(album.cover)" :alt="album.album" style="width: 200px; height: 200px;">
             </div>
-            <div class="flip-card-back" :style="{'background-color': album.color ? album.color : 'red'}">
+            <div class="flip-card-back" :style="{'background-color': '#0D0A0F'}">
                 <!-- <img :src="getAlbumCover(album.cover)" :alt="album.album" style="width: 200px; height: 200px; filter: brightness(0.5) blur(2px) grayscale(0.5);"> -->
-                <p>{{album.position}}</p>
-                <p>{{album.artist}}</p>
-                <p>{{album.album}}</p>
-                <p>{{album.year}}</p>
+                <div :style="{'color': '#0D0A0F', filter: 'brightness(3)'}" class="position">{{album.position}}</div>
+                <!-- <p class="position" :style="{'color': album.color}">{{album.position}}</p> -->
+                <div style="display: grid; grid-template-rows: repeat(auto-fill, 50%); height: 100%;">
+                <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="artist">{{album.artist}}</p>
+                <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="album">{{album.album}}</p>
+                </div>
+                                <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="year">{{album.year}}</p>
             </div>
             </div>
         </div>
@@ -49,6 +52,7 @@ export default {
 </script>
 
 <style scoped>
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
@@ -99,9 +103,55 @@ export default {
 /* Style the back side */
 .flip-card-back {
   /* background-color: dodgerblue; */
-  color: white;
-  transform: rotateY(180deg);
-  height: 200px;
+    color: white;
+    transform: rotateY(180deg);
+    height: 200px;
+    font-size: 9.5rem;
+    font-weight: 600;
+    font-family: system-ui;
+    font-weight: 700;
+}
+.flip-card-back p {
+    margin: 0 5px;
+    font-weight: bold;
+}
+.position {
+    /* font-size: 14rem;
+    font-weight: bold;
+    position: absolute;
+    width: 200px;
+    height: 240px;
+    margin: 0;
+    bottom: 5px;
+    filter: brightness(5);
+    z-index: -1; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.year {
+    position: fixed;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.1rem;
+}
+.artist {
+    margin-top:50px;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    color: white;
+    align-self: flex-end;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(13, 10, 15);
+}
+.album {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2rem;
+    margin-top: 8px;
+    font-size: 1.1rem;
+    padding-top: 5px;
 }
 /* .flip-card-back::before {
     background-image: '../assets/albumcovers/turnstileglowon.jpeg';
