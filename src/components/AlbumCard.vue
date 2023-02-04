@@ -1,28 +1,24 @@
 <template>
-    <!-- <img :src="require(`../assets/albumcovers/${album.cover}`)"> -->
-    <!-- <div style="border:1px solid black; padding: 10px;"> -->
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
             <img :src="getAlbumCover(album.cover)" :alt="album.album" style="width: 200px; height: 200px;">
             </div>
-            <div class="flip-card-back" :style="{'background-color': '#0D0A0F'}">
+            <div :class="album.position > 99 ? 'flip-card-back-hundo' : 'flip-card-back'" :style="{'background-color': '#0D0A0F'}">
                 <!-- <img :src="getAlbumCover(album.cover)" :alt="album.album" style="width: 200px; height: 200px; filter: brightness(0.5) blur(2px) grayscale(0.5);"> -->
-                <div :style="{'color': '#0D0A0F', filter: 'brightness(3)'}" class="position">{{album.position}}</div>
+                <div :style="{'color': '#0D0A0F', filter: 'brightness(3)'}" :class="album.position > 99 ? 'position-hundo' : 'position'">{{album.position}}</div>
                 <!-- <p class="position" :style="{'color': album.color}">{{album.position}}</p> -->
                 <div style="display: grid; grid-template-rows: repeat(auto-fill, 50%); height: 100%;">
                 <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="artist">{{album.artist}}</p>
                 <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="album">{{album.album}}</p>
                 </div>
-                                <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="year">{{album.year}}</p>
+                <p :style="{'color': '#0D0A0F', filter: 'invert(3)'}" class="year">{{album.year}}</p>
             </div>
             </div>
         </div>
 </template>
 
 <script>
-
-//import test from "../assets/albumcovers/blink182.jpeg";
 
 export default {
     name: 'Album',
@@ -86,7 +82,7 @@ export default {
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.flip-card-front, .flip-card-back, .flip-card-back-hundo {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -111,20 +107,28 @@ export default {
     font-family: system-ui;
     font-weight: 700;
 }
-.flip-card-back p {
+.flip-card-back-hundo {
+  /* background-color: dodgerblue; */
+    color: white;
+    transform: rotateY(180deg);
+    height: 200px;
+    font-size: 7rem;
+    font-weight: 600;
+    font-family: system-ui;
+    font-weight: 700;
+}
+.flip-card-back p, .flip-card-back-hundo p {
     margin: 0 5px;
     font-weight: bold;
 }
 .position {
-    /* font-size: 14rem;
-    font-weight: bold;
     position: absolute;
-    width: 200px;
-    height: 240px;
-    margin: 0;
-    bottom: 5px;
-    filter: brightness(5);
-    z-index: -1; */
+    width: 100%;
+    height: 100%;
+}
+
+.position-hundo {
+    margin-top: 1.5rem;
     position: absolute;
     width: 100%;
     height: 100%;

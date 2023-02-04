@@ -1,18 +1,18 @@
 <template>
 <div class="grid">
-  <Album v-for="album in albumList" :key="album.position" :album="album" />
+  <AlbumCard v-for="album in albumList" :key="album.position" :album="album" />
   </div>
 </template>
 
 <script>
 import { albums } from './albums'
 
-import Album from './components/Album.vue'
+import AlbumCard from './components/AlbumCard.vue'
 
 export default {
   name: 'App',
   components: {
-    Album
+    AlbumCard
   },
   setup() {
     const albumList = albums;
