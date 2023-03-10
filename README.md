@@ -2,6 +2,8 @@
 
 100 Greatest Albums
 
+// info
+
 ## Project setup
 ```
 npm install
