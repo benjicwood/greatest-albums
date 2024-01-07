@@ -4,7 +4,7 @@
       v-model="filterString"
       placeholder="Search Artist / Album title..."
     >
-  <p>view: <span @click="changeView('list')" :class="view === 'list' ? 'selected' : ''">list</span> / <span @click="changeView('grid')" :class="view === 'grid' ? 'selected' : ''">grid</span></p>
+  <p>view: <span style="cursor:pointer" @click="changeView('list')" :class="view === 'list' ? 'selected' : ''">list</span> / <span style="cursor:pointer" @click="changeView('grid')" :class="view === 'grid' ? 'selected' : ''">grid</span></p>
   <div v-if="view === 'list'">
     <ListItem v-for="album in albumList" :key="album.position" :album="album" />
   </div>
