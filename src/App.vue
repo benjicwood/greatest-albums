@@ -2,7 +2,7 @@
     <input
       type="text"
       v-model="filterString"
-      placeholder="Search Artist / Album title..."
+      placeholder="Search Artist / Album title or year..."
     >
   <p>view: <span style="cursor:pointer" @click="changeView('list')" :class="view === 'list' ? 'selected' : ''">list</span> / <span style="cursor:pointer" @click="changeView('grid')" :class="view === 'grid' ? 'selected' : ''">grid</span></p>
   <div v-if="view === 'list'">
@@ -41,7 +41,7 @@ export default {
     watch: {
       filterString: function() {
           let shortlist = this.fullAlbumList.filter(album => {
-            return album.artist.toLowerCase().includes(filterString.value.toLowerCase()) || album.album.toLowerCase().includes(filterString.value.toLowerCase())
+            return album.artist.toLowerCase().includes(filterString.value.toLowerCase()) || album.album.toLowerCase().includes(filterString.value.toLowerCase()) || album.year.toString().includes(filterString.value.toLowerCase())
         })
         this.albumList = shortlist;
       }
